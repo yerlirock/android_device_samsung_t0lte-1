@@ -27,21 +27,21 @@ BOARD_GPS_SET_PRIVACY := true
 # inherit from the proprietary version
 -include vendor/samsung/t0lte/BoardConfigVendor.mk
 
-# LZMA Compression
-WITH_LZMA_OTA := true
-
-# BlissPop Configs
-BLISS_WIPE_CACHES := 1
+# Bliss Configs
+BLISS_BUILD_BLOCK := 1
 BLISSIFY := true
 BLISS_O3 := true
 BLISS_STRICT := false
 BLISS_GRAPHITE := true
-BLISS_KRAIT := false
+BLISS_KRAIT := true
 BLISS_PIPE := true
-TARGET_TC_ROM := 5.2-linaro
-TARGET_TC_KERNEL := 4.8
+TARGET_TC_ROM := 4.9-linaro
+TARGET_TC_KERNEL := 4.9-linaro
 TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
 
-#SaberMod
+# SaberMod
 -include vendor/bliss/config/sm.mk
+
+#this is a hack, it relies on this file being processed after the one from smdk4412-qcom-common
+BOARD_RIL_CLASS += ../../../device/samsung/t0lte/ril/
