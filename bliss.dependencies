@@ -13,7 +13,7 @@
     },
     {
         "remote":       "github",
-        "repository":	"healthmimics/android_kernel_samsung_smdk4412",
+        "repository":	"SorrowfulMercies/android_kernel_samsung_smdk4412",
         "target_path":	"kernel/samsung/smdk4412",
         "revision": 	"cm-12.1"
     },
