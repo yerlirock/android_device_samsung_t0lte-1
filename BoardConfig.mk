@@ -26,3 +26,6 @@ BOARD_GPS_SET_PRIVACY := true
 
 # inherit from the proprietary version
 -include vendor/samsung/t0lte/BoardConfigVendor.mk
+
+#this is a hack, it relies on this file being processed after the one from smdk4412-qcom-common		
+BOARD_RIL_CLASS += ../../../device/samsung/t0lte/ril/
