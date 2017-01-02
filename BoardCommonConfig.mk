@@ -53,6 +53,3 @@ TARGET_OTA_ASSERT_DEVICE := t0lte,t0ltexx,GT-N7105,t0ltedv,GT-N7105T,t0lteatt,SG
 
 # Selinux
 BOARD_SEPOLICY_DIRS += device/samsung/t0lte/selinux
-
-#This is a hack, it relies on this file being processed after the one from smdk4412-qcom-common
-BOARD_RIL_CLASS += ril/
