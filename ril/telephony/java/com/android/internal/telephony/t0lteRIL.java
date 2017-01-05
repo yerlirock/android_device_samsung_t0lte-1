@@ -7,20 +7,49 @@ import java.util.ArrayList;
 import android.telephony.PhoneNumberUtils;
 import java.util.Collections;
 
+import java.io.IOException;
+import java.io.File;
+
 public class t0lteRIL extends smdk4x12QComRIL{
     public t0lteRIL(Context context, int networkModes, int cdmaSubscription) {
 	super(context,networkModes,cdmaSubscription);
+	getChroot();
     }
 
     public t0lteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
+	getChroot();
     }
 
-    //modified version of smdk4x12QComRIL.responseCallList - three redundant reads from p removed
+    private static int CM12_CHROOT = 1;
+    private static int SKK_CHROOT = 2;
+    private static int TM_CHROOT = 3;
+    private int chrootVersion = CM12_CHROOT;
+    private void getChroot(){
+        File ch = new File("/system/rilchroot");
+        String c = null;
+        try {
+                c = ch.getCanonicalPath();
+        }catch(IOException e){
+                riljLog("getChroot failed " + e);
+        }
+        riljLog("getChroot " + c);
+        if(c.equals("/system/cm12chroot"))chrootVersion = CM12_CHROOT;
+        if(c.equals("/system/skkchroot"))chrootVersion = SKK_CHROOT;
+        if(c.equals("/system/tmchroot"))chrootVersion = TM_CHROOT;
+    }
+
     @Override
     protected Object
     responseCallList(Parcel p) {
+	if(chrootVersion == TM_CHROOT)return tm_responseCallList(p);
+	else return super.responseCallList(p);
+    }
+
+    //modified version of smdk4x12QComRIL.responseCallList - three redundant reads from p removed
+    protected Object
+    tm_responseCallList(Parcel p) {
         int num;
         int voiceSettings;
         ArrayList<DriverCall> response;
