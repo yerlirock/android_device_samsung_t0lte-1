@@ -1,15 +1,15 @@
 [
     {
         "remote":       "github",
-        "repository":   "CyanogenMod/android_device_samsung_smdk4412-common",
+        "repository":   "LineageOS/android_device_samsung_smdk4412-common",
         "target_path":  "device/samsung/smdk4412-common",
-        "revision":     "cm-13.0"
+        "revision":     "cm-14.1"
     },
     {
         "remote":       "github",
-        "repository":	"CyanogenMod/android_device_samsung_smdk4412-qcom-common",
+        "repository":	"LineageOS/android_device_samsung_smdk4412-qcom-common",
         "target_path":	"device/samsung/smdk4412-qcom-common",
-        "revision":     "cm-13.0"
+        "revision":     "cm-14.1"
     },
     {
         "remote":       "github",
@@ -25,8 +25,8 @@
     },
     {
         "remote":       "github",
-        "repository":	"CyanogenMod/android_hardware_samsung",
+        "repository":	"LineageOS/android_hardware_samsung",
         "target_path":	"hardware/samsung",
-        "revision": 	"cm-13.0"
+        "revision": 	"cm-14.1"
     }
 ]
